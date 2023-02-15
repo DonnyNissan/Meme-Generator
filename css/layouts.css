@@ -1,0 +1,18 @@
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "nav    nav"
+        "img    img"
+        "canvas box"
+        "footer footer"
+    ;
+    gap: 20px;
+    justify-items: center;
+}
+
+.box-layout {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}

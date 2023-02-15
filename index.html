@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Memes</title>
+</head>
+
+<body onload="init()">
+
+
+    <nav class="main-nav">
+        Nav
+    </nav>
+
+    <main class="main-layout">
+
+        <div class="img-gallery">
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="my-canvas" height="400" width="400">
+            </canvas>
+        </div>
+
+        <div class="control-box box-layout">
+            <div>
+                <input type="text" class="user-text" placeholder="Enter text here">
+            </div>
+
+            <div class="conrol-buttons">
+                <button class="add-text" onclick="addTexts()">Add Text</button>
+                <button class="remove-text">Remove Text</button>
+            </div>
+
+            <div>
+                <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
+            </div>
+
+    </main>
+
+    <footer class="main-footer">
+        Footer
+    </footer>
+
+    <script src="js/memeService.js"></script>
+    <script src="js/memeController.js"></script>
+    <script src="js/galleryController.js"></script>
+    </script>
+</body>
+
+</html>

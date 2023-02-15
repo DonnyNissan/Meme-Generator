@@ -1,0 +1,30 @@
+@import url(layouts.css);
+@import url(gallery.css);
+@import url(meme.css);
+@import url(mq.css);
+
+
+/* /////////////////////////////////////////////////// */
+
+* {
+    box-sizing: border-box;
+}
+
+.main-nav {
+    grid-area: "nav";
+    background-color: rgb(224, 233, 230);
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.main-footer {
+    grid-area: "footer";
+    background-color: rgb(189, 123, 123);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+a {
+    text-decoration: none;
+}
