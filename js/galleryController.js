@@ -11,14 +11,13 @@ function renderGallery() {
     imgs.forEach(img => {
         strHTML += `<img onclick="onImgSelect(${img.id})" src="${img.url}" alt="Img${img.id}">`
     })
-    const elGallery = document.querySelector('.img-gallery')
+    const elGallery = document.querySelector('.img-container')
     elGallery.innerHTML = strHTML
 }
 
 function onImgSelect(imgIdx) {
-
     renderMeme(imgIdx)
-    document.querySelector('.img-gallery').style.display = "none"
+    document.querySelector('.img-container').style.display = "none"
     document.querySelector('.canvas-container').style.display = "block"
     document.querySelector('.control-box').style.display = "grid"
 }

@@ -5,23 +5,11 @@
         grid-template-columns: 1fr;
     }
 
-    .main-nav {
-        grid-column: 1/2;
-    }
-
     .img-gallery {
         grid-column: 1/2;
     }
 
     .canvas-container {
-        grid-column: 1/2;
-    }
-
-    .control-box {
-        grid-column: 1/2;
-    }
-
-    .main-footer {
         grid-column: 1/2;
     }
 }
