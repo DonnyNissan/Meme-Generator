@@ -1,23 +1,17 @@
 .canvas-container {
     display: none;
-    grid-area: "canvas";
-    width: 100%;
+    min-width: 400px;
+    max-width: 450px;
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 10px;
     background-color: rgb(90, 77, 103);
 }
 
-#my-canvas {
-    background-color: beige;
-}
-
 .control-box {
     display: none;
-    grid-area: "box";
-    width: 100%;
-    min-width: 440px;
-    max-width: 500px;
+    min-width: 400px;
+    max-width: 450px;
     min-height: 400px;
     margin-bottom: 20px;
     padding: 20px;

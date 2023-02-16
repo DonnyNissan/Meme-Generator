@@ -1,15 +1,10 @@
-@media (max-width: 700px) {
+/* mobile first */
+
+@media (min-width: 700px) {
 
     .main-layout {
         display: grid;
-        grid-template-columns: 1fr;
-    }
-
-    .img-gallery {
-        grid-column: 1/2;
-    }
-
-    .canvas-container {
-        grid-column: 1/2;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
 }

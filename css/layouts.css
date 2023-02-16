@@ -1,8 +1,17 @@
 .main-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr;
     justify-items: center;
+    max-width: 900px;
+    margin: auto;
+}
+
+.img-gallery {
+    grid-column: 1/2;
+}
+
+.canvas-container {
+    grid-column: 1/2;
 }
 
 .box-layout {

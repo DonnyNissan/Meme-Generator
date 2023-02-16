@@ -25,13 +25,20 @@ let gImgs = [
 let gKeywordSearchCountMap = {}
 
 let gMeme = {
-    selectedImgId: 5,
-    selectedLineIdx: 0,
+    selectedImgId: null,
+    selectedLineIdx: null,
     lines: [
         {
-            txt: 'I sometimes eat Falafel', size: 20,
-            align: 'left',
-            color: 'red'
+            txt: null,
+            size: 40,
+            align: 'center',
+            color: 'white'
+        },
+        {
+            txt: null,
+            size: 40,
+            align: 'center',
+            color: 'white'
         }
     ]
 }
@@ -42,6 +49,45 @@ function drawImgFromLocal(idx) {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xEnd,yEnd
     }
+}
+
+function setTextLine(currLine, lineNum) {
+    gMeme.lines[lineNum].txt = currLine.txt
+    gMeme.lines[lineNum].size = currLine.size
+    gMeme.lines[lineNum].align = currLine.align
+    gMeme.lines[lineNum].color = currLine.color
+    drawText(lineNum)
+}
+
+function clearText(lineNum) {
+    gMeme.lines[lineNum].txt = ''
+    renderMeme(gMeme.selectedImgId)
+    gMeme.lines[0].txt = gMeme.lines[1].txt = null
+}
+
+function clearMeme() {
+    gMeme = {
+        selectedImgId: null,
+        selectedLineIdx: null,
+        lines: [
+            {
+                txt: null,
+                size: 40,
+                align: 'center',
+                color: 'white'
+            },
+            {
+                txt: null,
+                size: 40,
+                align: 'center',
+                color: 'white'
+            }
+        ]
+    }
+}
+
+function setSelectedImgId(imgId) {
+    gMeme.selectedImgId = imgId
 }
 
 function getMeme() {

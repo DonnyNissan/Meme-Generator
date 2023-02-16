@@ -1,5 +1,4 @@
 .img-container {
-    grid-area: "img";
     grid-column: 1/3;
     width: 100%;
     border-radius: 10px;
@@ -13,18 +12,24 @@
     margin: 0 auto;
 }
 
-.img-gallery h1 {
-    grid-column: 1/3;
-    text-align: center;
+.gallery-main {
+    grid-column: 1/4;
+    width: 100%;
+    max-width: 880px;
+    margin-bottom: 20px;
 }
 
-img {
+.img-container img {
     display: block;
     width: 100%;
     max-width: 200px;
     border-radius: 8px;
 }
 
-img:hover {
+.img-container img:hover {
     box-shadow: 5px 5px 5px 5px teal;
+}
+
+.gallery-main h1 {
+    text-align: center;
 }

@@ -12,15 +12,20 @@
 <body onload="init()">
 
     <nav class="main-nav">
-        Nav
+        <img class="logo" src="logo/trollface.png" alt="logo">
+        <div class="links">
+            <a href="#" onclick="init()" class="nav-link">Images Gallery</a>
+            <a href="#" onclick="onGenerateMeme()" class="nav-link">Generate Meme</a>
+            <a href="#" class="nav-link">Saved Memes</a>
+        </div>
     </nav>
 
     <main class="main-layout">
-        <!-- <div class="gallery-main"> -->
-        <!-- <h1>Select a Photo to Edit</h1> -->
-        <div class="img-container">
+        <div class="gallery-main">
+            <h1>Select a Photo to Edit</h1>
+            <div class="img-container">
+            </div>
         </div>
-        <!-- </div> -->
 
         <div class="canvas-container">
             <canvas id="my-canvas" height="400" width="400">
@@ -28,13 +33,28 @@
         </div>
 
         <div class="control-box box-layout">
+            <h3>Go Crazy</h3>
             <div>
                 <input type="text" class="user-text" placeholder="Enter text here">
+                <div class="text-size">
+                    <label for=""></label>
+                </div>
+                <div class="text-color">
+                    <label for="text-color" class="form-label">Text Color</label>
+                    <input onchange="onChangeColor(this.value)" type="color" name="text-color" value="#DDDDDD">
+                </div>
+                <button class="choose-line" onclick="onSwitchLines()">Add Text to <span>Top</span> Line</button>
+            </div>
+
+            <div class="text-size">
+                Font Size: <span>40</span>
+                <button class="add-text" onclick="onChangeFontSize(+4)">+</button>
+                <button class="remove-text" onclick="onChangeFontSize(-4)">-</button>
             </div>
 
             <div class="conrol-buttons">
-                <button class="add-text" onclick="addTexts()">Add Text</button>
-                <button class="remove-text">Remove Text</button>
+                <button class="add-text" onclick="onAddText()">Add Text Line</button>
+                <button class="remove-text" onclick="onClearText()">Clear</button>
             </div>
 
             <div>
@@ -43,9 +63,10 @@
     </main>
 
     <footer class="main-footer">
-        Footer
+        Coffee rights: Don Nissan &#169
     </footer>
 
+    <script src="js/utils.js"></script>
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
     <script src="js/galleryController.js"></script>

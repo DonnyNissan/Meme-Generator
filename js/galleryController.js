@@ -1,12 +1,15 @@
 'use strict'
 
 function init() {
+    document.querySelector('.canvas-container').style.display = "none"
+    document.querySelector('.control-box').style.display = "none"
     renderGallery()
+    document.querySelector('.gallery-main').style.display = "block"
 }
 
 function renderGallery() {
+    clearMeme()
     const imgs = getImgs()
-    console.log('imgs : ', imgs)
     let strHTML = ''
     imgs.forEach(img => {
         strHTML += `<img onclick="onImgSelect(${img.id})" src="${img.url}" alt="Img${img.id}">`
@@ -16,8 +19,9 @@ function renderGallery() {
 }
 
 function onImgSelect(imgIdx) {
+    setSelectedImgId(imgIdx)
     renderMeme(imgIdx)
-    document.querySelector('.img-container').style.display = "none"
+    document.querySelector('.gallery-main').style.display = "none"
     document.querySelector('.canvas-container').style.display = "block"
     document.querySelector('.control-box').style.display = "grid"
 }
