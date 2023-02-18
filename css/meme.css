@@ -18,3 +18,32 @@
     border-radius: 10px;
     background-color: bisque;
 }
+
+.control-box button {
+    margin: 5px;
+    padding: 5px;
+}
+
+.choose-line {
+    height: 30px;
+}
+
+.plus-btn img {
+    height: 30px;
+}
+
+.bigger-btn img {
+    height: 30px;
+}
+
+.smaller-btn img {
+    height: 30px;
+}
+
+.delete-btn img {
+    height: 30px;
+}
+
+.align-btn img {
+    width: 30px;
+}

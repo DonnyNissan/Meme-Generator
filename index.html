@@ -33,29 +33,35 @@
         </div>
 
         <div class="control-box box-layout">
-            <h3>Go Crazy</h3>
+
+            <input type="text" class="user-text" placeholder="Enter text here">
+
+            <div class="main-control">
+                <button class="choose-line" onclick="onSwitchLines()">Edit: <span>Top</span> Line</button>
+                <button class="plus-btn" onclick="onAddTextLine()"><img src="icons/plus.png"></button>
+                <button class="delete-btn" onclick="onClearText()"><img src="icons/delete.png"></button>
+            </div>
+
             <div>
-                <input type="text" class="user-text" placeholder="Enter text here">
-                <div class="text-size">
-                    <label for=""></label>
+                <div class="text-size-align">
+                    <button class="bigger-btn" onclick="onChangeFontSize(+4)"><img src="icons/bigger.png"></button>
+                    <button class="smaller-btn" onclick="onChangeFontSize(-4)"><img src="icons/smaller.png"></button>
+                    <button class="align-btn" onclick="onSetAlign('left')"><img src="icons/align_left.png"></button>
+                    <button class="align-btn" onclick="onSetAlign('center')"><img src="icons/align_center.png"></button>
+                    <button class="align-btn" onclick="onSetAlign('right')"><img src="icons/align_right.png"></button>
                 </div>
-                <div class="text-color">
-                    <label for="text-color" class="form-label">Text Color</label>
+
+                <div class="font-family-color">
+                    <select name="choose-font" onchange="onSetFont(value)">
+                        <option value="Impact">Impact</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Lucida Sans">Lucida Sans</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                    </select>
                     <input onchange="onChangeColor(this.value)" type="color" name="text-color" value="#DDDDDD">
                 </div>
-                <button class="choose-line" onclick="onSwitchLines()">Add Text to <span>Top</span> Line</button>
             </div>
 
-            <div class="text-size">
-                Font Size: <span>40</span>
-                <button class="add-text" onclick="onChangeFontSize(+4)">+</button>
-                <button class="remove-text" onclick="onChangeFontSize(-4)">-</button>
-            </div>
-
-            <div class="conrol-buttons">
-                <button class="add-text" onclick="onAddText()">Add Text Line</button>
-                <button class="remove-text" onclick="onClearText()">Clear</button>
-            </div>
 
             <div>
                 <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>

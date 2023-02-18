@@ -14,30 +14,33 @@ let gImgs = [
     { id: 10, url: 'img/10.jpg', keywords: ['funny', 'politics'] },
     { id: 11, url: 'img/11.jpg', keywords: ['guys', 'kissing'] },
     { id: 12, url: 'img/12.jpg', keywords: ['funny'] },
-    { id: 13, url: 'img/13.jpg', keywords: ['cheers', 'actor'] },
-    { id: 14, url: 'img/14.jpg', keywords: ['matrix', 'actor'] },
-    { id: 15, url: 'img/15.jpg', keywords: ['lord of the rings', 'actor'] },
-    { id: 16, url: 'img/16.jpg', keywords: ['funny', 'actor'] },
+    { id: 13, url: 'img/13.jpg', keywords: ['cheers', 'actors'] },
+    { id: 14, url: 'img/14.jpg', keywords: ['matrix', 'actors'] },
+    { id: 15, url: 'img/15.jpg', keywords: ['lord of the rings', 'actors'] },
+    { id: 16, url: 'img/16.jpg', keywords: ['funny', 'actors'] },
     { id: 17, url: 'img/17.jpg', keywords: ['politics'] },
     { id: 18, url: 'img/18.jpg', keywords: ['toy story'] }
 ]
 
 let gKeywordSearchCountMap = {}
+let gSelectedLineIdx = 0
 
 let gMeme = {
     selectedImgId: null,
-    selectedLineIdx: null,
+    selectedLineIdx: 0,
     lines: [
         {
             txt: null,
             size: 40,
             align: 'center',
+            font: 'Impact',
             color: 'white'
         },
         {
             txt: null,
             size: 40,
             align: 'center',
+            font: 'Impact',
             color: 'white'
         }
     ]
@@ -51,39 +54,35 @@ function drawImgFromLocal(idx) {
     }
 }
 
-function setTextLine(currLine, lineNum) {
-    gMeme.lines[lineNum].txt = currLine.txt
-    gMeme.lines[lineNum].size = currLine.size
-    gMeme.lines[lineNum].align = currLine.align
-    gMeme.lines[lineNum].color = currLine.color
-    drawText(lineNum)
+function switchLines(lineIdx) {
+    gSelectedLineIdx = lineIdx
 }
 
-function clearText(lineNum) {
-    gMeme.lines[lineNum].txt = ''
+function addTextLine(txt) {
+    gMeme.lines[gSelectedLineIdx].txt = txt
+    // renderMeme(gMeme.selectedImgId)
+    drawLine(gMeme.lines[gSelectedLineIdx])
+}
+
+function changeFontSize(diff) {
+    gMeme.lines[gSelectedLineIdx].size += diff
+    console.log(' gMeme.lines[gSelectedLineIdx].size: ', gMeme.lines[gSelectedLineIdx].size)
+}
+
+function setAlign(val) {
+    gMeme.lines[gSelectedLineIdx].align = val
+}
+
+function setFont(val) {
+    gMeme.lines[gSelectedLineIdx].font = val
+}
+
+function changeColor(color) {
+    gMeme.lines[gSelectedLineIdx].color = color
+}
+
+function clearText() {
     renderMeme(gMeme.selectedImgId)
-    gMeme.lines[0].txt = gMeme.lines[1].txt = null
-}
-
-function clearMeme() {
-    gMeme = {
-        selectedImgId: null,
-        selectedLineIdx: null,
-        lines: [
-            {
-                txt: null,
-                size: 40,
-                align: 'center',
-                color: 'white'
-            },
-            {
-                txt: null,
-                size: 40,
-                align: 'center',
-                color: 'white'
-            }
-        ]
-    }
 }
 
 function setSelectedImgId(imgId) {
@@ -96,4 +95,27 @@ function getMeme() {
 
 function getImgs() {
     return gImgs
+}
+
+function clearMeme() {
+    gMeme = {
+        selectedImgId: null,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: null,
+                size: 40,
+                align: 'center',
+                font: 'Impact',
+                color: 'white'
+            },
+            {
+                txt: null,
+                size: 40,
+                align: 'center',
+                font: 'Impact',
+                color: 'white'
+            }
+        ]
+    }
 }
