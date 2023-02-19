@@ -8,7 +8,7 @@ function init() {
 }
 
 function renderGallery() {
-    clearMeme()
+    // clearMeme()
     const imgs = getImgs()
     let strHTML = ''
     imgs.forEach(img => {
@@ -20,7 +20,8 @@ function renderGallery() {
 
 function onImgSelect(imgIdx) {
     setSelectedImgId(imgIdx)
-    renderMeme(imgIdx)
+    setCanvas()
+    renderMeme()
     document.querySelector('.gallery-main').style.display = "none"
     document.querySelector('.canvas-container').style.display = "block"
     document.querySelector('.control-box').style.display = "grid"

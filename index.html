@@ -34,21 +34,25 @@
 
         <div class="control-box box-layout">
 
-            <input type="text" class="user-text" placeholder="Enter text here">
+            <input oninput="onEnteringTxt(value)" type="text" class="text-input" placeholder="Enter text here">
 
             <div class="main-control">
-                <button class="choose-line" onclick="onSwitchLines()">Edit: <span>Top</span> Line</button>
-                <button class="plus-btn" onclick="onAddTextLine()"><img src="icons/plus.png"></button>
-                <button class="delete-btn" onclick="onClearText()"><img src="icons/delete.png"></button>
+                <button class="btn switch-btn" onclick="onSwitchLines()"><img src="icons/arrows.png"></button>
+                <button class="btn plus-btn" onclick="onAddTextLine()"><img src="icons/plus.png"></button>
+                <button class="btn delete-btn" onclick="onClearText()"><img src="icons/delete.png"></button>
             </div>
 
             <div>
                 <div class="text-size-align">
-                    <button class="bigger-btn" onclick="onChangeFontSize(+4)"><img src="icons/bigger.png"></button>
-                    <button class="smaller-btn" onclick="onChangeFontSize(-4)"><img src="icons/smaller.png"></button>
-                    <button class="align-btn" onclick="onSetAlign('left')"><img src="icons/align_left.png"></button>
-                    <button class="align-btn" onclick="onSetAlign('center')"><img src="icons/align_center.png"></button>
-                    <button class="align-btn" onclick="onSetAlign('right')"><img src="icons/align_right.png"></button>
+                    <button class="btn bigger-btn" onclick="onChangeFontSize(+4)"><img src="icons/bigger.png"></button>
+                    <button class="btn smaller-btn" onclick="onChangeFontSize(-4)"><img
+                            src="icons/smaller.png"></button>
+                    <button class="btn align-btn" onclick="onSetAlign('right')"><img
+                            src="icons/align_left.png"></button>
+                    <button class="btn align-btn" onclick="onSetAlign('center')"><img
+                            src="icons/align_center.png"></button>
+                    <button class="btn align-btn" onclick="onSetAlign('left')"><img
+                            src="icons/align_right.png"></button>
                 </div>
 
                 <div class="font-family-color">
@@ -58,7 +62,7 @@
                         <option value="Lucida Sans">Lucida Sans</option>
                         <option value="Times New Roman">Times New Roman</option>
                     </select>
-                    <input onchange="onChangeColor(this.value)" type="color" name="text-color" value="#DDDDDD">
+                    <input oninput="onChangeColor(this.value)" type="color" name="text-color" value="#DDDDDD">
                 </div>
             </div>
 

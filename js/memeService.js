@@ -23,66 +23,75 @@ let gImgs = [
 ]
 
 let gKeywordSearchCountMap = {}
-let gSelectedLineIdx = 0
 
 let gMeme = {
     selectedImgId: null,
     selectedLineIdx: 0,
     lines: [
         {
-            txt: null,
+            txt: 'Add Text',
             size: 40,
             align: 'center',
             font: 'Impact',
-            color: 'white'
-        },
-        {
-            txt: null,
-            size: 40,
-            align: 'center',
-            font: 'Impact',
-            color: 'white'
+            color: 'white',
+            pos: {
+                x: null,
+                y: null
+            }
         }
     ]
 }
 
-function drawImgFromLocal(idx) {
-    const img = new Image()
-    img.src = `img/${idx}.jpg`
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xEnd,yEnd
+function setLineText(txt) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt ? txt : 'ADD TEXT'
+}
+
+// function switchLines(lineIdx) {
+
+// }
+
+function addTxtLine(txt) {
+    const newTxtLine = {
+        txt: 'Add Text',
+        size: 40,
+        align: 'center',
+        font: 'Impact',
+        color: 'white',
+        pos: {
+            x: null,
+            y: null
+        }
     }
-}
-
-function switchLines(lineIdx) {
-    gSelectedLineIdx = lineIdx
-}
-
-function addTextLine(txt) {
-    gMeme.lines[gSelectedLineIdx].txt = txt
-    // renderMeme(gMeme.selectedImgId)
-    drawLine(gMeme.lines[gSelectedLineIdx])
+    gMeme.lines.push(newTxtLine)
 }
 
 function changeFontSize(diff) {
-    gMeme.lines[gSelectedLineIdx].size += diff
-    console.log(' gMeme.lines[gSelectedLineIdx].size: ', gMeme.lines[gSelectedLineIdx].size)
+    gMeme.lines[gMeme.selectedLineIdx].size += diff
 }
 
 function setAlign(val) {
-    gMeme.lines[gSelectedLineIdx].align = val
+    gMeme.lines[gMeme.selectedLineIdx].align = val
 }
 
 function setFont(val) {
-    gMeme.lines[gSelectedLineIdx].font = val
+    gMeme.lines[gMeme.selectedLineIdx].font = val
 }
 
 function changeColor(color) {
-    gMeme.lines[gSelectedLineIdx].color = color
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function switchLines() {
+    if (gMeme.selectedLineIdx) gMeme.selectedLineIdx = 0
+    else gMeme.selectedLineIdx = 1
 }
 
 function clearText() {
-    renderMeme(gMeme.selectedImgId)
+    renderMeme(gMeme)
+}
+
+function setSelectedLineIdx(idx) {
+    gMeme.selectedLineIdx = idx
 }
 
 function setSelectedImgId(imgId) {
@@ -97,25 +106,25 @@ function getImgs() {
     return gImgs
 }
 
-function clearMeme() {
-    gMeme = {
-        selectedImgId: null,
-        selectedLineIdx: 0,
-        lines: [
-            {
-                txt: null,
-                size: 40,
-                align: 'center',
-                font: 'Impact',
-                color: 'white'
-            },
-            {
-                txt: null,
-                size: 40,
-                align: 'center',
-                font: 'Impact',
-                color: 'white'
-            }
-        ]
-    }
-}
+// function clearMeme() {
+//     gMeme = {
+//         selectedImgId: null,
+//         selectedLineIdx: 0,
+//         lines: [
+//             {
+//                 txt: null,
+//                 size: 40,
+//                 align: 'center',
+//                 font: 'Impact',
+//                 color: 'white'
+//             },
+//             {
+//                 txt: null,
+//                 size: 40,
+//                 align: 'center',
+//                 font: 'Impact',
+//                 color: 'white'
+//             }
+//         ]
+//     }
+// }

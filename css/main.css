@@ -42,6 +42,8 @@ a {
 }
 
 .main-footer {
+    position: sticky;
+    bottom: 0px;
     background-color: rgb(189, 123, 123);
     padding: 20px;
     border-radius: 10px;
