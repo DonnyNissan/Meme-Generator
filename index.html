@@ -11,12 +11,14 @@
 
 <body onload="init()">
 
-    <nav class="main-nav">
-        <img class="logo" src="logo/trollface.png" alt="logo">
-        <div class="links">
-            <a href="#" onclick="init()" class="nav-link">Images Gallery</a>
-            <a href="#" onclick="onGenerateMeme()" class="nav-link">Generate Meme</a>
-            <a href="#" class="nav-link">Saved Memes</a>
+    <nav class="nav">
+        <div class="main-nav">
+            <img onclick="init()" class="logo" src="logo/trollface.png" alt="logo">
+            <div class="links">
+                <a href="#" onclick="init()" class="nav-link">Images Gallery</a>
+                <a href="#" class="nav-link no-active">Saved Memes</a>
+                <a href="#" class="nav-link no-active">About</a>
+            </div>
         </div>
     </nav>
 
@@ -39,14 +41,11 @@
             <div class="main-control">
                 <button class="btn switch-btn" onclick="onSwitchLines()"><img src="icons/arrows.png"></button>
                 <button class="btn plus-btn" onclick="onAddTextLine()"><img src="icons/plus.png"></button>
-                <button class="btn delete-btn" onclick="onClearText()"><img src="icons/delete.png"></button>
+                <button class="btn delete-btn" onclick="onClearMeme()"><img src="icons/delete.png"></button>
             </div>
 
             <div>
                 <div class="text-size-align">
-                    <button class="btn bigger-btn" onclick="onChangeFontSize(+4)"><img src="icons/bigger.png"></button>
-                    <button class="btn smaller-btn" onclick="onChangeFontSize(-4)"><img
-                            src="icons/smaller.png"></button>
                     <button class="btn align-btn" onclick="onSetAlign('right')"><img
                             src="icons/align_left.png"></button>
                     <button class="btn align-btn" onclick="onSetAlign('center')"><img
@@ -56,20 +55,26 @@
                 </div>
 
                 <div class="font-family-color">
-                    <select name="choose-font" onchange="onSetFont(value)">
-                        <option value="Impact">Impact</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Lucida Sans">Lucida Sans</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                    </select>
-                    <input oninput="onChangeColor(this.value)" type="color" name="text-color" value="#DDDDDD">
+                    <button class="btn bigger-btn" onclick="onChangeFontSize(+4)"><img src="icons/bigger.png"></button>
+                    <button class="btn smaller-btn" onclick="onChangeFontSize(-4)"><img
+                            src="icons/smaller.png"></button>
+                    <input class="color-input" oninput="onChangeColor(this.value)" type="color" name="text-color"
+                        value="#DDDDDD">
                 </div>
-            </div>
 
+                <select class="choose-font" name="choose-font" onchange="onSetFont(value)">
+                    <option value="Impact" disabled selected>Select Font</option>
+                    <option value="Impact">Impact</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Lucida Sans">Lucida Sans</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                </select>
+            </div>
 
             <div>
                 <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
             </div>
+        </div>
     </main>
 
     <footer class="main-footer">

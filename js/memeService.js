@@ -1,6 +1,5 @@
 'use strict'
 
-
 let gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] },
     { id: 2, url: 'img/2.jpg', keywords: ['cute', 'dog'] },
@@ -22,8 +21,6 @@ let gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: ['toy story'] }
 ]
 
-let gKeywordSearchCountMap = {}
-
 let gMeme = {
     selectedImgId: null,
     selectedLineIdx: 0,
@@ -42,14 +39,6 @@ let gMeme = {
     ]
 }
 
-function setLineText(txt) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = txt ? txt : 'ADD TEXT'
-}
-
-// function switchLines(lineIdx) {
-
-// }
-
 function addTxtLine(txt) {
     const newTxtLine = {
         txt: 'Add Text',
@@ -63,6 +52,10 @@ function addTxtLine(txt) {
         }
     }
     gMeme.lines.push(newTxtLine)
+}
+
+function setLineText(txt) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
 function changeFontSize(diff) {
@@ -82,6 +75,7 @@ function changeColor(color) {
 }
 
 function switchLines() {
+    if (gMeme.lines.length === 1) return
     if (gMeme.selectedLineIdx) gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx = 1
 }
@@ -106,25 +100,22 @@ function getImgs() {
     return gImgs
 }
 
-// function clearMeme() {
-//     gMeme = {
-//         selectedImgId: null,
-//         selectedLineIdx: 0,
-//         lines: [
-//             {
-//                 txt: null,
-//                 size: 40,
-//                 align: 'center',
-//                 font: 'Impact',
-//                 color: 'white'
-//             },
-//             {
-//                 txt: null,
-//                 size: 40,
-//                 align: 'center',
-//                 font: 'Impact',
-//                 color: 'white'
-//             }
-//         ]
-//     }
-// }
+function clearMeme() {
+    gMeme = {
+        selectedImgId: null,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: 'Add Text',
+                size: 40,
+                align: 'center',
+                font: 'Impact',
+                color: 'white',
+                pos: {
+                    x: null,
+                    y: null
+                }
+            }
+        ]
+    }
+}

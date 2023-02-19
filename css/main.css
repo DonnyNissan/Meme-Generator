@@ -16,25 +16,44 @@ body {
 
 .main-nav {
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: 1fr 350px;
+    max-width: 880px;
+    min-width: 470px;
+    margin: 0 auto;
     background-color: rgb(224, 233, 230);
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 10px;
 }
 
+.nav {
+    width: 100%;
+    background-color: rgb(224, 233, 230);
+    border-radius: 10px;
+}
+
 .logo {
+    grid-column: 1/2;
     width: 50px;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .links {
+    grid-column: 2/3;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .link {
     margin-right: 10px;
+}
+
+.no-active {
+    cursor: not-allowed;
 }
 
 a {
@@ -42,8 +61,7 @@ a {
 }
 
 .main-footer {
-    position: sticky;
-    bottom: 0px;
+    min-width: 470px;
     background-color: rgb(189, 123, 123);
     padding: 20px;
     border-radius: 10px;

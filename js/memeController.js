@@ -6,21 +6,14 @@ let gCtx
 function setCanvas() {
     gElCanvas = document.getElementById('my-canvas')
     gCtx = gElCanvas.getContext('2d')
+    const elTxtInput = document.querySelector('.text-input')
+    elTxtInput.value = ''
 }
 
 function renderMeme() {
     const meme = getMeme()
     drawImgFromLocal(meme)
     console.log('meme : ', meme)
-}
-
-function drawImgFromLocal(meme) {
-    const img = new Image()
-    img.src = `img/${meme.selectedImgId}.jpg`
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xEnd,yEnd
-        drawLines(meme.lines)
-    }
 }
 
 function drawLines(lines) {
@@ -33,10 +26,6 @@ function drawLines(lines) {
             line.pos.x = gElCanvas.width / 2
             line.pos.y = gElCanvas.height - 50
         }
-        // } else {
-        //     line.pos.x = gElCanvas.width / 2
-        //     line.pos.y = (meme.lines[idx - 1].pos.y + meme.lines[idx - 2].pos.y) / 2
-        // }
         console.log('line : ', line)
         drawLine(line)
     })
@@ -58,6 +47,17 @@ function onEnteringTxt(txt) {
     renderMeme()
 }
 
+function onAddTextLine() {
+    const lines = getMeme().lines
+    if (lines.length > 1) return
+    const elTxtInput = document.querySelector('.text-input')
+    elTxtInput.value = ''
+    elTxtInput.focus()
+    addTxtLine()
+    setSelectedLineIdx(lines.length - 1)
+    renderMeme()
+}
+
 function onSwitchLines() {
     switchLines()
     const meme = getMeme()
@@ -68,15 +68,10 @@ function onSwitchLines() {
     renderMeme()
 }
 
-function onAddTextLine() {
-    const lines = getMeme().lines
-    if (lines.length > 1) return
-    const elTxtInput = document.querySelector('.text-input')
-    elTxtInput.value = ''
-    elTxtInput.focus()
-    addTxtLine()
-    setSelectedLineIdx(lines.length - 1)
-    renderMeme()
+function onClearMeme() {
+    const meme = getMeme()
+    clearMeme()
+    onImgSelect(meme.selectedImgId)
 }
 
 function onSetFont(val) {
@@ -89,12 +84,6 @@ function onSetAlign(val) {
     renderMeme()
 }
 
-// function onGenerateMeme() {
-//     const idx = getRandomInt(1, 18)
-//     gCurrLine.txt = 'Random Text'
-//     onImgSelect(idx)
-// }
-
 function onChangeColor(color) {
     changeColor(color)
     renderMeme()
@@ -105,19 +94,17 @@ function onChangeFontSize(diff) {
     renderMeme()
 }
 
-// function onClearText() {
-//     clearText()
-// }
-
+function drawImgFromLocal(meme) {
+    const img = new Image()
+    img.src = `img/${meme.selectedImgId}.jpg`
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        drawLines(meme.lines)
+    }
+}
 
 function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-img'
 }
-
-function clearCanvas() {
-    gCtx.fillStyle = '#ede5ff'
-    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
-}
-

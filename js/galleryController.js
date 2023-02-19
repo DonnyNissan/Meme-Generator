@@ -8,7 +8,7 @@ function init() {
 }
 
 function renderGallery() {
-    // clearMeme()
+    clearMeme()
     const imgs = getImgs()
     let strHTML = ''
     imgs.forEach(img => {

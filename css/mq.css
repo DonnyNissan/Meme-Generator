@@ -1,6 +1,6 @@
 /* mobile first */
 
-@media (min-width: 840px) {
+@media (min-width: 940px) {
 
     .main-layout {
         display: grid;
